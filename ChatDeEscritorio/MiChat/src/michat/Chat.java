@@ -9,12 +9,14 @@ package michat;
 
 import com.placeholder.PlaceHolder;
 import com.sun.deploy.uitoolkit.impl.fx.ui.FXUIFactory;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.xml.ws.Holder;
 
 /**
@@ -30,6 +32,8 @@ public class Chat extends javax.swing.JFrame {
     
     Negocio miNegocio;
     int cont=0;
+    int img =0;
+    TryGoogleSpeechRecognitionSimple voz=null;
     public Chat() {
         initComponents();
         miNegocio=new Negocio(this);
@@ -47,14 +51,16 @@ public class Chat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtMensajeEnviar = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cmdEnviar = new javax.swing.JButton();
+        cmdVoz = new javax.swing.JToggleButton();
         cmdLimpiar = new javax.swing.JButton();
         cmdAceptar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtMensajeEnviar = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMensajes = new javax.swing.JEditorPane();
         jLabel4 = new javax.swing.JLabel();
@@ -64,13 +70,6 @@ public class Chat extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(670, 470));
         setResizable(false);
         getContentPane().setLayout(null);
-
-        txtMensajeEnviar.setColumns(20);
-        txtMensajeEnviar.setLineWrap(true);
-        txtMensajeEnviar.setRows(5);
-        txtMensajeEnviar.setWrapStyleWord(true);
-        getContentPane().add(txtMensajeEnviar);
-        txtMensajeEnviar.setBounds(80, 130, 230, 80);
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +119,17 @@ public class Chat extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmdEnviar);
-        cmdEnviar.setBounds(80, 220, 100, 30);
+        cmdEnviar.setBounds(80, 250, 100, 30);
+
+        cmdVoz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/negro.png"))); // NOI18N
+        cmdVoz.setEnabled(false);
+        cmdVoz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdVozActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmdVoz);
+        cmdVoz.setBounds(200, 250, 40, 33);
 
         cmdLimpiar.setText("Limpiar chat");
         cmdLimpiar.setEnabled(false);
@@ -140,6 +149,16 @@ public class Chat extends javax.swing.JFrame {
         });
         getContentPane().add(cmdAceptar);
         cmdAceptar.setBounds(80, 80, 100, 30);
+
+        txtMensajeEnviar.setEditable(false);
+        txtMensajeEnviar.setColumns(20);
+        txtMensajeEnviar.setLineWrap(true);
+        txtMensajeEnviar.setRows(5);
+        txtMensajeEnviar.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(txtMensajeEnviar);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(80, 130, 230, 110);
 
         txtMensajes.setEditable(false);
         txtMensajes.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -192,6 +211,8 @@ public class Chat extends javax.swing.JFrame {
             this.miNegocio.DefinirUsuario(this.txtUsuario.getText());
             this.txtMensajeEnviar.setEditable(true);
             this.cmdEnviar.setEnabled(true);
+            this.txtMensajeEnviar.setEditable(true);
+            this.cmdVoz.setEnabled(true);
             this.txtUsuario.setText("");
           PlaceHolder holder = new PlaceHolder(this.txtUsuario, "Cambiar de Usuario");
           this.miNegocio.limpiar();
@@ -221,6 +242,24 @@ public class Chat extends javax.swing.JFrame {
     private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
         
     }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void cmdVozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdVozActionPerformed
+         if(img==0){
+        this.cmdVoz.setIcon(new ImageIcon("src/Imagenes/verde.png"));
+           voz=null;
+           voz = new TryGoogleSpeechRecognitionSimple(this);
+            try {
+                voz.principal();
+            } catch (IOException ex) {
+                Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        img=1;
+        }else {
+            this.cmdVoz.setIcon(new ImageIcon("src/Imagenes/negro.png"));
+            voz.cerrar();
+        img=0;
+        }
+    }//GEN-LAST:event_cmdVozActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,13 +300,15 @@ public class Chat extends javax.swing.JFrame {
     private javax.swing.JButton cmdAceptar;
     private javax.swing.JButton cmdEnviar;
     private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JToggleButton cmdVoz;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea txtMensajeEnviar;
+    private javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JTextArea txtMensajeEnviar;
     public javax.swing.JEditorPane txtMensajes;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
