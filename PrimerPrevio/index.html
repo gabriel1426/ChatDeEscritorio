@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hospedaje Estudiantil</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+
+    <header>
+       
+        <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-34096cba57146ffa67399742fa77f51e-database.png" style="display: inline">
+        
+        <h2 style="display: inline">Laboratorio de Consulta estructurado</h2>
+    </header>
+    <div class="container">
+    <section class="row">
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+
+         <h1>Laboratorio SQL</h1>
+         <H3>Ingresa al sistema para poder hacer uso del laboratorio SQL</H3>
+         <img class="img-responsive" src="http://www.andersonmedeiros.com/wp-content/uploads/2010/08/SQL.png" alt="">
+
+        </div>
+
+        <div class="col-md-6 col-sm-12 col-xs-12" >
+                <div class="panel panel-success" title="Ingreso de usuario">
+                        <h3 class="panel-title">Ingreso de Usuario</h3>
+            <form class="form-horizontal">
+                    <br>
+                    <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Usuario:</label>
+                 <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="Usuario">
+                </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                        <div class="col-sm-10"> 
+                            <input type="password" class="form-control" id="pwd" placeholder="Contraseña">
+                        </div>
+                </div>
+                <br>
+                <br>
+                
+                <div class="form-group col-md-offset-3">
+                    <div class="col-sm-10 col-sm-offset-4">
+                <button class="btn btn-primary" >ingresar</button>
+                </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+            </form>
+       </div>
+        </div>
+        
+    </section>
+
+<section>
+        <nav  class="navbar navbar-default">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#navbar" aria-expanded="false" area-controls="navbar">
+                <span class="sr-only"> Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <div id="navbar" class=" container collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                      <li ><a href="#" data-seleccion="ejemplo">Ejemplo</a></li>
+                      <li ><a href="#" data-seleccion="ejercicio">Ejercicios</a></li>
+                     </ul>
+                </div>
+                </div>
+            </nav>
+</section>
+<div class="container" id="contenedor">
+
+        <div>
+
+                <section class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                       
+                        <img class="img-responsive" src="http://3.bp.blogspot.com/-tizqstqSBzw/TkiZZgrGjPI/AAAAAAAAAB8/0d9Ct0BcFvQ/s1600/14.png" alt="">
+                        <br>
+                        <p>Ejemplo 1:  Selección del nombre del proyecto (PROJNAME), la fecha de inicio (PRSTDATE) y la fecha de finalización (PRENDATE) de la tabla PROJECT. Ordenación de la tabla 
+                                resultante por la fecha de finalización con las fechas más recientes primero.</p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                            <img class="img-responsive" src="https://image.slidesharecdn.com/seguridadtsqlsqlserver2008-130928085115-phpapp02/95/seguridad-tsql-sql-server-2008-46-638.jpg?cb=1380358343" alt="">
+                            <p>Ejemplo 2:  Selección del número de departamento (WORKDEPT) y el salario medio del departamento (SALARY) para todos los departamentos de la tabla EMPLOYEE. Ordenación la tabla 
+                                    resultante por orden ascendente por el salario medio del departamento</p>    
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                            <img class="img-responsive" src="http://3.bp.blogspot.com/-tizqstqSBzw/TkiZZgrGjPI/AAAAAAAAAB8/0d9Ct0BcFvQ/s1600/14.png" alt="">
+                            <p>Ejemplo 3:  Declaración de un cursor llamado UP_CUR para utilizarlo en un programa C para actualizar las columnas de fecha de inicio (PRSTDATE) y de fecha de finalización (PRENDATE)
+                                 en la tabla PROJECT. El programa debe recibir los dos valores junto con el valor de número del proyecto (PROJNO) para cada fila.</p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                            <img class="img-responsive" src="http://www.mundoracle.com/img_6_d.jpg" alt="">
+                            <p>Ejemplo 4:  Determinación del número de empleado y el salario de los representantes de ventas junto con el salario medio y el número total de empleados de sus departamentos. 
+                                También, listado del salario medio del departamento con el salario medio más alto.</p>
+                    </div>
+                </section>
+            
+            </div>
+
+</div>
+</div>
+
+<footer class="container-fluid">
+ <h4>2018 Todos los derechos reservados a Gabriel Contreras</h4>
+</footer>
+
+    <script>
+        $("li a").click(function(event){
+		event.preventDefault();
+		if($(this).data('seleccion')!=null){
+			$("#contenedor").load($(this).data('seleccion')+'.html');
+		}
+	});
+    </script>
+</body>
+</html>
