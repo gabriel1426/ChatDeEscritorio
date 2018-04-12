@@ -33,7 +33,7 @@ public class Chat extends javax.swing.JFrame {
     Negocio miNegocio;
     int cont=0;
     int img =0;
-    TryGoogleSpeechRecognitionSimple voz=null;
+    
     public Chat() {
         initComponents();
         miNegocio=new Negocio(this);
@@ -246,17 +246,11 @@ public class Chat extends javax.swing.JFrame {
     private void cmdVozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdVozActionPerformed
          if(img==0){
         this.cmdVoz.setIcon(new ImageIcon("src/Imagenes/verde.png"));
-           voz=null;
-           voz = new TryGoogleSpeechRecognitionSimple(this);
-            try {
-                voz.principal();
-            } catch (IOException ex) {
-                Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           miNegocio.activarVoz(this);
         img=1;
         }else {
             this.cmdVoz.setIcon(new ImageIcon("src/Imagenes/negro.png"));
-            voz.cerrar();
+            miNegocio.cerraVoz();
         img=0;
         }
     }//GEN-LAST:event_cmdVozActionPerformed

@@ -16,7 +16,6 @@ import net.sourceforge.javaflacencoder.FLACFileWriter;
 public class TryGoogleSpeechRecognitionSimple implements GSpeechResponseListener {
 	
         Chat miChat;
-        String mF = "";
         final Microphone mic = new Microphone(FLACFileWriter.FLAC);
         GSpeechDuplex duplex = new GSpeechDuplex("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
         

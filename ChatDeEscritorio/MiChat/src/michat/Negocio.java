@@ -6,6 +6,7 @@
 
 package michat;
 
+import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ public class Negocio extends Thread  implements Runnable{
    private Connection con=null;
    private Chat miChat;
    private Consultas consultas;
+   TryGoogleSpeechRecognitionSimple voz=null;
    
    
    public Negocio(Chat miChat){
@@ -56,6 +58,19 @@ public class Negocio extends Thread  implements Runnable{
     
     Mensaje mens = new Mensaje(this.consultas.getUsuario(), mensaje, hora);
     this.consultas.insertarMensaje(con, mens);
+    }
+    
+    public void activarVoz(Chat miChat){
+        voz=null;
+           voz = new TryGoogleSpeechRecognitionSimple(miChat);
+            try {
+                voz.principal();
+            } catch (IOException ex) {
+                Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    public void cerraVoz(){
+        voz.cerrar();
     }
     
     @Override
